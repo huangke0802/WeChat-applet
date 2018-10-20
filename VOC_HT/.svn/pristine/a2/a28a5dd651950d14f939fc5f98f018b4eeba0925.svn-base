@@ -1,0 +1,11 @@
+<!--pages/company/company.wxml-->
+<view class='register' style="background:url('{{imgPath}}/background.png');background-size:100% 100%;" >
+<text>--请选择您的公司--</text> 
+ <view class='method'>
+   <image bindtap="selectCompay" class="hlogo" src="{{imgPath}}/{{imgNames}}" mode="aspectFit"></image>
+    <image bindtap="selectCompayC" class="clogo" src="{{imgPath}}/icss_logo.png" mode="aspectFit"></image> 
+</view>
+<view class='callmethod'>
+ <image  bindtap="makecall" class="calllogo" src="{{imgPath}}/phone.png" mode="aspectFit"></image>
+</view>
+</view>

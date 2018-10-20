@@ -1,0 +1,31 @@
+<!--pages/rejectPage/rejectPage.wxml  驳回子工单-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+
+  <view class="voc-viewoview" id="vocEditOrder">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="voc-item-con">
+
+        <view class="voc-item-t">驳回子工单</view>
+
+        <view class="form-viewoview-item">
+          <text>请填写驳回原因：</text>
+          <view class="section">
+            <textarea bindblur="bindTextAreaBlur" placeholder="请输入驳回原因" value="{{rejectReason}}" bindinput="bindinputReject" />
+          </view>
+        </view>
+
+      </view>
+
+      <view class="btn-groups-voc">
+        <button class="item_button add-voc save-voc"  formType="reset">
+          取消
+        </button>
+        <button class="item_button add-voc" formType="submit">
+          确定
+        </button>
+      </view>
+    </form>
+  </view>
+
+
+</scroll-view>

@@ -1,0 +1,243 @@
+const app = getApp();
+const util = require('../../utils/util.js');
+const network = require('../../utils/network.js');
+const {
+  $Message
+} = require('../../dist/base/index');
+//改进措施发布给客户 url
+const improveUrl = app.globalData.BaseURL + '/questionICSS/publishWoMeasures';
+//解决进展发布给客户 url
+const solveUrl = app.globalData.BaseURL + '/questionICSS/publishWoProcess';
+//查询子工单的url
+const subOrdersUrl = app.globalData.BaseURL + '/questionICSS/querySubWO';
+//获取当前工单信息的url
+const curOrderUrl = app.globalData.BaseURL + '/questionICSS/queryVocProgress';
+Page({
+  data: {
+    id: '',
+    isProblem: 0,
+    problemRange: [{
+      value: 0,
+      text: '是'
+    }, {
+      value: 1,
+      text: '否'
+    }],
+    sortVOC: 0,
+    sortVOCRange: [{
+      value: 1,
+      text: '人力资源管理'
+    }, {
+      value: 2,
+      text: '能力提升'
+    }, {
+      value: 3,
+      text: '质量管理'
+    }, {
+      value: 4,
+      text: '沟通管理'
+    }, {
+      value: 5,
+      text: '行政支撑'
+    }, {
+      value: 6,
+      text: '信息安全'
+    }, {
+      value: 7,
+      text: 'IT支撑'
+    }, {
+      value: 8,
+      text: '其它'
+    }],
+    sortSmallVOC: 0,
+    sortSmallVOCRange: [],
+    frequency: 0,
+    frequencyRange: [{
+      value: 1,
+      text: '每天一次'
+    }, {
+      value: 2,
+      text: '每周一次'
+    }, {
+      value: 3,
+      text: '半月一次'
+    }, {
+      value: 4,
+      text: '每月一次'
+    }],
+    sysDate: util.getFormatDate(new Date()), //系统当前时间
+    planDate: util.getFormatDate(new Date()), //计划关闭日期，
+    imgPath: app.globalData.imgPath, //图片地址
+    improveValue: '',
+    solveValue: '',
+    curOderInfo: {},
+    subOrderTotal: 0,
+    expectedDate: ''
+  },
+  bindProblemChange(e) {
+    this.setData({
+      isProblem: e.detail.value
+    })
+  },
+  bindPlanDateChange(e) {
+    this.setData({
+      planDate: util.formatSelectDate(e.detail.value, '-')
+    })
+  },
+  onLoad: function(query) {
+
+    const self = this;
+    this.setData({
+      id: query.id
+    });
+    const params = {
+      id: query.id
+    }
+    //查询当前工单信息
+    network.requestLoading(curOrderUrl, JSON.stringify(params), '正在加载数据', function(res) {
+      console.log(res)
+      if (res) {
+        self.setData({
+          curOderInfo: res,
+          improveValue: res.woMeasures,
+          solveValue: res.woProgress,
+          expectedDate: util.dataFormat(res.woDueTime, "Y-M-D")
+        });
+      }
+    }, function() {
+      wx.showToast({
+        icon: 'none',
+        title: '加载数据失败',
+      })
+    });
+    //查询子工单信息
+    network.requestLoading(subOrdersUrl, JSON.stringify({
+      'parentVocId': query.id
+    }), '正在加载数据', function(res) {
+      if (res.resCode === 1) {
+        self.setData({
+          subOrderTotal: res.data.rows.length
+        });
+      }
+    }, function() {
+      wx.showToast({
+        icon: 'none',
+        title: '加载数据失败',
+      })
+    });
+  },
+  bindFrequencyChange(e) {
+    this.setData({
+      frequency: e.detail.value
+    })
+  },
+  bindSortVOCChange(e) {
+    this.setData({
+      sortVOC: e.detail.value
+    })
+  },
+  bindSmallVOCChange(e) {
+    this.setData({
+      sortSmallVOC: e.detail.value
+    })
+  },
+
+  /**
+   * 发送改进措施给客户
+   */
+  sendImproveToClient(e) {
+    const userInfo = app.globalData.userInfo;
+    const staffNo = userInfo.staffNo;
+    const params = {
+      id: this.data.id,
+      measures: this.data.improveValue,
+      staffNo
+    };
+    network.requestLoading(improveUrl, JSON.stringify(params), '正在加载数据', function(res) {
+      if (res.resCode === 1) {
+        wx.showToast({
+          icon: 'success',
+          title: '发布成功',
+        })
+      }
+    }, function() {
+      wx.showToast({
+        icon: 'none',
+        title: '加载数据失败',
+      })
+    });
+  },
+  /**
+   * 发送解决措施给客户
+   */
+  sendSolveToClient(e) {
+    const userInfo = app.globalData.userInfo;
+    const staffNo = userInfo.staffNo;
+    const params = {
+      id: this.data.id,
+      content: this.data.solveValue,
+      staffNo
+    };
+    network.requestLoading(solveUrl, JSON.stringify(params), '正在加载数据', function(res) {
+      if (res.resCode === 1) {
+        wx.showToast({
+          icon: 'success',
+          title: '发布成功',
+        })
+      }
+    }, function() {
+      wx.showToast({
+        icon: 'none',
+        title: '加载数据失败',
+      })
+    });
+  },
+  addWorkOrder(e) {
+    const parentVocId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `/pages/buildNewWorkOrder/buildNewWorkOrder?parentVocId=${parentVocId}`
+    })
+  },
+  bindImproveTextAreaBlur(e) {
+    this.setData({
+      improveValue: e.detail.value
+    })
+  },
+  bindSolveTextAreaBlur(e) {
+    this.setData({
+      solveValue: e.detail.value
+    })
+  },
+  bindRejectValue(e) {
+    this.setData({
+      rejectValue: e.detail.value
+    })
+  },
+
+  gotoWorkOrder(e) {
+    if (this.data.subOrderTotal > 0) {
+      wx.navigateTo({
+        url: `/pages/subWorkOrderPage/subWorkOrderPage?parentVocId=${this.data.id}`
+      })
+    }
+  },
+  onShow(){
+    const self = this;
+    console.log('重新加载', this.data.id)
+    //查询子工单信息
+    network.requestLoading(subOrdersUrl, JSON.stringify({
+      'parentVocId': this.data.id
+    }), '正在加载数据', function (res) {
+      if (res.resCode === 1) {
+        self.setData({
+          subOrderTotal: res.data.rows.length
+        });
+      }
+    }, function () {
+      wx.showToast({
+        icon: 'none',
+        title: '加载数据失败',
+      })
+    });
+  }
+})

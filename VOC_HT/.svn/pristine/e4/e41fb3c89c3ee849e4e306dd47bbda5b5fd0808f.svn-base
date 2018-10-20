@@ -1,0 +1,177 @@
+<!--pages/rejectOrder/rejectOrder.wxml  驳回工单-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='activity'>
+
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='message'>
+        <view class='progress_tx'>
+          <view class='tx'>问题单号：18091415024907 </view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>罗青松 （ID：HW254965） </view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx' bindtap="tel">电话：18980742935 <image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/phone.png"></image></view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>邮箱：luoqingsong@huawei.com </view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>外包管理部行管 （公司：华为公司，无线网络，成都） </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 工单清单处理 -->
+  <view class="toHandleVocView">
+
+    <view class="voc-con">
+
+      <view class="voc-item-con">
+        <view class="voc-item-t">填写工单</view>
+        <view>
+          <label>客户：</label>石一</view>
+        <view>
+          <label>提交时间：</label>2018-03-30 15:44:24</view>
+        <view>
+          <label>工单状态：</label>待提交</view>
+      </view>
+
+      <view class="acceviewt-content-VOC">
+        <view class="voc-item-con voc-item-viewrocess">
+          <view class="voc-item-t">处理工单</view>
+          <view>
+            <label>客户：</label>石小芳</view>
+          <view><label>接受时间：</label>2018-03-30 15:44:24</view>
+          <view><label>计划关闭日期：</label>2018-03-30 15:44:24</view>
+          <view><label>汇报频率：</label>每天一次</view>
+          <view><label>VOC分类：</label>人力资源管理</view>
+          <view><label>VOC小类：</label>持续集成</view>
+          
+          <view>
+            <label>改进措施：</label>内容内容内容内容内容内容内容内容内
+          </view>
+          <view>
+            <label>解决进展：</label>内容内容内容内容内容内容内容内容内
+          </view>
+
+        </view>
+
+        <view class="voc-viewoview" >
+          <view class="voc-item-con voc-item-viewrocess">
+            <view class="order-list">
+              <view class="voc-item-t">子工单</view>
+              <ul>
+                <li>
+                  <view class="order-list-item order-list-account">
+                    <text>子工单流水号：</text>{{item.subBusinessKey}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>工单描述：</label>{{item.subWoDesc}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>改进措施：</label>{{item.subWoMeasures ? item.subWoMeasures : "" }}
+                  </view>
+                  <view class="order-list-item">
+                    <label>解决进展：</label>{{item.subWoProcess ? item.subWoProcess : ""}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>状态：</label>{{item.actFinished}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>责任人：</label>{{item.woHandlerName}}（{{item.woHandlerNum}}）
+                  </view>
+                  <view class="order-list-item">
+                    <label>期望关闭时间：</label>{{item.woDueForTime}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>实际关闭时间：</label>{{item.woDueForTime}}
+                  </view>
+                  <view class="order-list-line"></view>
+                </li>
+
+                <li>
+                  <view class="order-list-item order-list-account">
+                    <text>子工单流水号：</text>{{item.subBusinessKey}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>工单描述：</label>{{item.subWoDesc}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>改进措施：</label>{{item.subWoMeasures ? item.subWoMeasures : "" }}
+                  </view>
+                  <view class="order-list-item">
+                    <label>解决进展：</label>{{item.subWoProcess ? item.subWoProcess : ""}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>状态：</label>{{item.actFinished}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>责任人：</label>{{item.woHandlerName}}（{{item.woHandlerNum}}）
+                  </view>
+                  <view class="order-list-item">
+                    <label>期望关闭时间：</label>{{item.woDueForTime}}
+                  </view>
+                  <view class="order-list-item">
+                    <label>实际关闭时间：</label>{{item.woDueForTime}}
+                  </view>
+                  
+                </li>
+              </ul>
+
+      </view>
+    </view>
+  </view>
+
+        <view class="voc-item-con voc-item-viewrocess">
+          <view class="order-list">
+            <view class="voc-item-t">历史进展</view>
+            <view class="histroyMore-ul">
+              <view class="histroyMore-li">
+                <text class="histroyMore-p">2018-03-30 15:44:24 </text>
+                <text>解决进展解决进展解决进展解决进展解决进展</text>
+              </view>
+              <view class="histroyMore-li">
+                <text class="histroyMore-p">2018-04-15 15:44:24 </text>
+                <text>解决进展解决进展解决进展解决进展展解决进展解决进展解决进展解决进展解决进展解决进展解决</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      
+      <view class="voc-item-con">
+    <view class="voc-item-t">关闭工单</view>
+    <view class="form-viewoview-item form-viewoview-edit-item">
+      <label>审批结果：</label>
+      <view class='userinfo_tx' style='padding-left: 0px'>
+        <picker name='resultsApproval' class='picker pickerFormItem' value="{{isResultsApproval}}" range-key="text" bindchange="bindResultsApprovalChange" range="{{resultsApprovalRange}}">
+          <view class="weui-input">{{resultsApprovalRange[isResultsApproval].text}}<image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/select.png"></image></view>
+        </picker>
+      </view>
+
+    </view>
+
+    <view class="form-viewoview-item">
+
+      <label>审批意见：</label>
+      <view class="section">
+        <textarea bindblur="bindTextAreaBlur"/>
+      </view>
+    </view>
+
+  </view>
+
+  
+
+  <view class="order-list-btn">
+
+    <button class="item_button item_sub_button">提交</button>
+
+  </view>
+    </view>
+  </view>
+
+</scroll-view>

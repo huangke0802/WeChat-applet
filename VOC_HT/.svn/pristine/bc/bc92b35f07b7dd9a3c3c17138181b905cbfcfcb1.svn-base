@@ -1,0 +1,16 @@
+<!--pages/error/error.wxml 注册审核未通过界面-->
+<view class='activity' style="background:url('{{imgPath}}/login_bg.png');background-size:100% 100%;">
+  <view class="login_container">
+    <view class='v_logo'>
+      <image bindtap="selectCompay" class="logo" src="{{imgPath}}/regist_error.png"></image>
+    </view>
+    <view class="title">主银~抱歉，前方遇到一点小麻烦,您的账号在审核中</view>
+    <view class="title"  wx:if='{{isDispaly}}'>
+         <text class='con'>未通过原因：{{content}}</text>
+    </view>
+      <view class="title" wx:if='{{isDispaly}}' > 
+         <text class='con'>不过不打紧，腾麦精灵马上为您定位问题 {{userinfo}}</text>
+    </view>
+     <view class="title"></view>
+  </view>
+</view>

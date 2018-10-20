@@ -1,0 +1,121 @@
+<!--pages/progress/progress.wxml  工单进展界面-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='activity'>
+
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='message'>
+        <view class='progress_tx'>
+          <view class='tx'>问题单号：{{workOrder.businessKey}}</view>
+        </view>
+        <view class='tx'>
+          <text>问题描述：</text>
+          <scroll-view class='srcoll_tx' scroll-y='true'>
+            {{workOrder.woDesc}}
+          </scroll-view>
+        </view>
+        <view class='tx expect-date' id='da'>期望解决日期：{{expectedDate}}</view>
+      </view>
+    </view>
+    
+    <view class='progress'>
+
+      <!--关闭start-->
+      <view wx:if="{{workOrder.currentStatus > 2}}" class='item'>
+        <image wx:if="{{workOrder.currentStatus==3}}" src='{{imgPath}}/success.png' mode="aspectFill"></image>
+        <image wx:else src='{{imgPath}}/orange-circle.png' mode="aspectFill"></image>
+        <view class=' progress-info'>
+          <text class='progress-tx'>
+            <text class="bold">状态：</text>
+            <text class="c35">{{workOrder.currentStatus==3?"待关闭":"已关闭"}}</text>
+          </text>
+          <text class='progress-tx'>
+            <text class="bold">责任人：</text>
+            <text class="c35">{{workOrder.actCurTaskAssigneeName}}</text>
+          </text>
+          <text class='progress-tx'>
+            <text class="bold">日期：</text>
+            <text class="c35">{{workOrder.currentStatus==3?sysDate:closeTime}}</text>
+          </text>
+        </view>
+      </view>
+      <!--关闭end-->
+
+      <!--处理start-->
+      <view wx:if="{{workOrder.currentStatus > 1}}" class='item'>
+        <image wx:if="{{workOrder.currentStatus==2}}" src='{{imgPath}}/success.png' mode="aspectFill"></image>
+        <image wx:else src='{{imgPath}}/orange-circle.png' mode="aspectFill"></image>
+        <view class=' progress-info '>
+          <text class='progress-tx '>
+            <text class="bold">状态：</text>
+            <text class="c35">{{workOrder.currentStatus==2?"处理中":"已处理"}}</text>
+          </text>
+          <text class='progress-tx'>
+            <text class="bold">责任人：</text>
+            <text class="c35">{{workOrder.currentStatus > 2?workOrder.woHandlerName:workOrder.actCurTaskAssigneeName}}</text>
+          </text>
+          <text wx:if="{{workOrder.woMeasures!=null && workOrder.woMeasures!=''}}" class='progress-tx'>
+            <text class="bold">整改措施：</text>
+            <text class="c35">{{workOrder.woMeasures}}</text>
+          </text>
+          <text wx:if="{{workOrder.woProgress!=null && workOrder.woProgress!=''}}" class='progress-tx'>
+            <text class="bold">解决进展：</text>
+            <text class="c35">{{workOrder.woProgress}}</text>
+          </text>
+          <text class='progress-tx'>
+            <text class="bold">日期：</text>
+            <text class="c35">{{lastPublishProgressTime?lastPublishProgressTime:handlerTime}} </text> 
+          </text>
+        </view>
+      </view>
+      <!--处理end-->
+
+      <!--受理start-->
+      <view class='item'>
+        <image wx:if="{{workOrder.currentStatus==1}}" src='{{imgPath}}/success.png' mode="aspectFill"></image>
+        <image wx:else src='{{imgPath}}/orange-circle.png' mode="aspectFill"></image>
+        <view class=' progress-info '>
+          <text class='progress-tx '>
+            <text class="bold">状态：</text>
+            <text class="c35">{{workOrder.currentStatus==1?"待受理":"已受理"}}</text>
+          </text>
+          <text class='progress-tx '>
+            <text class="bold">责任人：</text>
+            <text class="c35">{{workOrder.currentStatus > 2?workOrder.woHandlerName:workOrder.actCurTaskAssigneeName}}</text>
+          </text>
+          <text class='progress-tx'>
+            <text class="bold">日期：</text>
+            <text class="c35">{{workOrder.currentStatus==1?sysDate:assignTime}}</text>
+          </text>
+        </view>
+      </view>
+      <!--受理end-->
+
+      <!--提单start-->
+      <view class='item' style="padding:0 0 0 17px;;border:0;">
+        <text style="position:absolute;display:block;width:2px;background:#c8c8c8;height:31px;left:0"></text>
+        <image src='{{imgPath}}/orange-circle.png' mode="aspectFill" style="left:-7px"></image>
+        <view style="padding:10px 0 0 0;">
+          <view class=' progress-info'>
+            <text class='progress-tx'>
+              <text class="bold">状态：</text>
+              <text class="c35">提单</text>
+            </text>
+            <text class='progress-tx'>
+              <text class="bold">客户：</text>
+              <text class="c35">{{workOrder.contactName}}</text>
+            </text>
+            <text wx:if="{{workOrder.replaceName!=null}}" class='progress-tx'>
+              <text class="bold">提单人：</text>
+              <text class="c35">{{workOrder.replaceName}}</text>
+            </text>
+            <text class='progress-tx'>
+              <text class="bold">日期：</text>
+              <text class="c35">{{woTime}} </text>
+            </text>
+          </view>
+        </view>
+      </view>
+      <!--提单end-->
+    </view>
+  </view>
+</scroll-view>

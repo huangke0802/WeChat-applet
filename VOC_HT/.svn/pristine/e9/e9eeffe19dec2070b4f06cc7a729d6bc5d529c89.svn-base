@@ -1,0 +1,50 @@
+<!--pages/editNewWorkOrder/editNewWorkOrder.wxml  编辑子工单-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+
+<view class="voc-viewoview" id="vocEditOrder">
+
+  <view class="voc-item-con">
+
+    <view class="voc-item-t">请填写子工单信息</view>
+
+    <view>
+      <label>责任人：</label>
+      <view class="section">
+        <input placeholder="请输入责任人" auto-focus/>
+      </view>
+    </view>
+
+    <view>
+      <view class="section">
+        <view class="section__title">日期选择器：</view>
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+          <view class="picker">
+            当前选择: {{date}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view>
+      <text>子工单描述：</text>
+      <view class="section">
+        <textarea bindblur="bindTextAreaBlur"/>
+      </view>
+
+    </view>
+  </view>
+
+
+   <view class="btn-groups-voc">
+    <button class="item_button add-voc save-voc">
+      取消
+    </button>
+    <button class="item_button add-voc">
+      确定
+    </button>
+  </view>
+
+</view>
+
+
+</scroll-view>

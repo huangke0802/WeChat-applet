@@ -1,0 +1,52 @@
+<!--pages/subWorkOrderPage/subWorkOrderPage.wxml-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='activity'>
+
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='message'>
+        <view class='progress_tx'>
+          <view class='tx'>问题单号：{{curSubOderInfo.subBusinessKey}}</view>
+        </view>
+        <view class='tx'>
+          <text>问题描述：</text>
+          <scroll-view class='srcoll_tx' scroll-y='true'>
+            {{curSubOderInfo.subWoDesc}}
+          </scroll-view>
+        </view>
+        <view class='tx expect-date' id='da'>期望解决日期：{{expectedDate}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="voc-viewoview" id="vocEditOrder">
+    <view class="voc-item-con voc-item-viewrocess">
+      <view class="order-list">
+        <view class="voc-item-t">子工单</view>
+        <ul>
+          <li>
+            <view class="order-list-item">
+              <view >改进措施：</view>
+              <view class='text-item'>{{curSubOderInfo.subWoMeasures}}</view>
+            </view>
+            <view class="order-list-item">
+              <view>解决进展：</view>
+              <view class='text-item'>{{curSubOderInfo.subWoProcess}}</view>
+            </view>
+
+            <view class="order-list-item margin-item">
+              <label>责任人：</label> {{curSubOderInfo.subWoHandlerName ? curSubOderInfo.subWoHandlerName : ''}}（{{curSubOderInfo.subWoHandlerNum}}）
+            </view>
+            
+            <view class="order-list-btn clearfix">
+              <button class="item_button item-width float-left" bindtap="pass">通过</button>
+              <button class="item_button item-width float-right" bindtap="reject" >驳回</button>
+            </view>
+          </li>
+        </ul>
+
+      </view>
+    </view>
+  </view>
+
+
+</scroll-view>

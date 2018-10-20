@@ -1,0 +1,44 @@
+const app = getApp();
+const util = require('../../utils/util.js');
+const network = require('../../utils/network.js');
+Page({
+  data: {
+    isProblem: 0,
+    problemRange: [{
+      value: 0,
+      text: '是'
+    }, {
+      value: 1,
+      text: '否'
+    }],
+    reportRate: 0,
+    reportRateRange: ['每周一次', '每日一次'],
+    sortVOC: 0,
+    sortVOCRange: ['人力资源管理', '人力资源管理2'],
+    sortSmallVOC: 0,
+    sortSmallVOCRange: ['绩效管理和沟通', '绩效管理和沟通2'],
+    sysDate: util.getFormatDate(new Date()), //系统当前时间
+    planDate: util.getFormatDate(new Date()), //计划关闭日期，
+    imgPath: app.globalData.imgPath, //图片地址
+  },
+  bindProblemChange(e) {
+    console.log(e.detail.value)
+    this.setData({
+      isProblem: e.detail.value
+    })
+  },
+  bindPlanDateChange(e) {
+    console.log()
+    this.setData({
+      planDate: util.formatSelectDate(e.detail.value, '-')
+    })
+  },
+  onLoad: function (query) {
+    console.log('query', query)
+  },
+  tel: function () {
+    wx.makePhoneCall({
+      phoneNumber: '13163715520',
+    })
+  }
+})

@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/error/error",
+    "pages/addquestion/addquestion",
+    "pages/homeicss/homeicss",
+    "pages/company/company",
+    "pages/register/register",
+    "pages/registerC/registerC",
+    "pages/all/all",
+    "pages/success/success",
+    "pages/preSuccess/preSuccess",
+    "pages/progress/progress",
+    "pages/closure/closure",
+    "pages/editactivity/editactivity",
+    "pages/mycustomer/mycustomer"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "腾麦精灵",
+    "navigationBarTextStyle": "black"
+  }
+}

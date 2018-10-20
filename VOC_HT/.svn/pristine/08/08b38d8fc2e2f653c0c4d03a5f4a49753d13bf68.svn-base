@@ -1,0 +1,54 @@
+<!--pages/subWorkOrderPage/subWorkOrderPage.wxml-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='activity'>
+
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='baseInfo'>
+        <view class='useraccount' bindtap='gotoCustomerInfo'>客户：{{curOderInfo.contactName}}</view>
+      </view>
+      <view class='message'>
+        <view class='progress_tx'>
+          <view class='tx'>问题单号：{{curOderInfo.businessKey}}</view>
+        </view>
+        <view class='tx'>
+          <text>问题描述：</text>
+          <scroll-view class='srcoll_tx' scroll-y='true'>
+            {{curOderInfo.woDesc}}
+          </scroll-view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>提单人：{{curOderInfo.businessKey}}</view>
+        </view>
+        <view class='tx expect-date' id='da'>期望解决日期：{{expectedDate}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="voc-viewoview" id="vocEditOrder">
+    <view class="voc-item-con voc-item-viewrocess">
+      <view class="order-list">
+        <view class="voc-item-t">子工单</view>
+        <ul>
+          <li wx:for="{{subOrderList}}" wx:key="unique" wx:for-index="index" wx:for-item="item">
+            <view class="order-list-item order-list-account">
+              <text>改进措施：</text>
+              <textarea></textarea>
+            </view>
+            <view class="order-list-item">
+              <label>解决进展：</label>
+              <textarea></textarea>
+            </view>
+            
+            <view class="order-list-btn">
+              <button class="item_button turn-down-btn" bindtap="save" data-id="{{item.id}}">保存草稿</button>
+              <button class="item_button del" bindtap="submitTocustomer" data-id="{{item.id}}">提交客户关闭</button>
+            </view>
+          </li>
+        </ul>
+
+      </view>
+    </view>
+  </view>
+
+
+</scroll-view>

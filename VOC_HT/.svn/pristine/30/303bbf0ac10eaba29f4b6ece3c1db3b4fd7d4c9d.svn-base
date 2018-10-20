@@ -1,0 +1,61 @@
+<!--pages/editNewWorkOrder/editNewWorkOrder.wxml  编辑子工单-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <!-- <view class='activity'>
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='message'>
+        <view class='tx'>{{curOderInfo.actCurTaskAssigneeName}} （ID：HW251555）</view>
+        <view class='tx' bindtap="tel">电话：13168098484<image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/phone.png"></image></view>
+        <view class='tx'>邮箱：linzhenhua@huawei.com</view>
+        <view class='tx'>DU部长 （公司：华为公司，无线网络，深圳）</view>
+      </view>
+    </view>
+  </view> -->
+
+  <view class="voc-viewoview" id="vocEditOrder">
+
+    <view class="voc-item-con">
+
+      <view class="voc-item-t">请填写子工单信息</view>
+
+      <view>
+        <label>责任人：</label>
+        <view class="section">
+          <input placeholder="请输入责任人工号" value="{{taskUser}}" auto-focus bindinput="taskUser"/>
+        </view>
+      </view>
+
+      <view>
+        <view class="section">
+          <picker name='planDate' class='picker pickerFormItem' value="{{planDate}}" mode="date" fields="day" start="{{sysDate}}" end="2030-12-30" bindchange="bindPlanDateChange">
+              <text class="pickerFormLabel">希望关闭日期： </text>
+              <view class="weui-input">{{planDate}}
+                <image style="width: 12px; height: 12px;padding-left: 5px;padding-top:7px;" src="../../images/cal.png"></image>
+              </view>
+
+            </picker>
+        </view>
+      </view>
+
+      <view>
+        <text>子工单描述：</text>
+        <view class="section">
+              <textarea bindblur="bindTextAreaBlur" value='{{oderWorkDes}}' bindinput="oderWorkDes" placeholder="请输入描述"/>
+        </view>
+
+      </view>
+    </view>
+
+
+    <view class="btn-groups-voc">
+      <button class="item_button add-voc save-voc" bindtap='reset'>
+        取消
+      </button>
+      <button class="item_button add-voc" bindtap='submit'>
+        确定
+      </button>
+    </view>
+
+  </view>
+
+
+</scroll-view>

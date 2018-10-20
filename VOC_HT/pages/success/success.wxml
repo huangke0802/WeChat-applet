@@ -1,0 +1,12 @@
+<!--pages/success/success.wxml  注册成功界面 -->
+<view class='activity'>
+<form bindsubmit="registerSuccessSubmit" bindreset="formReset">
+  <view class='icon'>
+    <icon type="success" size="70" color="rgb(44,147,240)"/>
+  </view>
+  <text class='tx_success'>主银~注册信息已提交成功</text>
+  <text class='tx_success_con' style='padding-top: 20px'>{{navigationBarTitleText}}腾麦精灵正在快马加鞭的审核，请主银耐心等待哦</text>
+  <text class='tx_success_con' style='padding-top: 5px'>并在1个工作日内返回结果</text>
+   <button class="login_button" formType="submit">确认</button>
+</form>
+</view>

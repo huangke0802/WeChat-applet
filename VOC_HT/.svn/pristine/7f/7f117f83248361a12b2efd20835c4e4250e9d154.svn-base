@@ -1,0 +1,24 @@
+const app = getApp();
+const util = require('../../utils/util.js');
+const network = require('../../utils/network.js');
+
+const rejectUrl = app.globalData.BaseURL + '/questionICSS/rejectVoc'; //子工单驳回url
+
+Page({
+  data : {
+    rejectReason : ""
+  },
+  onLoad(options){
+
+  },
+
+  //输入文本域
+  bindinputReject(e){
+    this.setData({
+      rejectReason : e.detail.value
+    });
+  },
+
+
+
+});

@@ -1,0 +1,40 @@
+<!--pages/editactivity/editactivity.wxml-->
+<scroll-view class='srcoll_activity' >
+  <view class='userinfo'  style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+    <view class='message' >
+      <view class='useraccount'>姓名：{{userInfo.lastName}} {{userInfo.staffNo}}</view>
+      <view class='usermessage'>
+      <text>主部门：{{userInfo.productLineName}}</text>
+      <!-- <image style="width: 30rpx; height: 30rpx"  src="{{imgPath}}/tel.png"></image>
+      <text>{{userInfo.tel}}</text>-->
+      </view> 
+       <view class='usermessage'>
+       <text>问题专属接口人：</text>
+           <text  wx:if="{{userInfo.customerManagerName!=null&&      userInfo.customerManagerName!=''}}">{{userInfo.customerManagerName}} </text>
+          <text wx:elif="{}">分派中</text> 
+             <text  wx:if="{{userInfo.customerManagerName!=null&&      userInfo.customerManagerName!=''&& userInfo.tel!=null&&userInfo.tel!=''}}"  bindtap='makePhoneCall' data-number="{{userInfo.csTel}}" >  {{userInfo.csTel}}</text>
+      </view>
+    </view>
+  </view>
+  <form bindsubmit="formSubmit"  report-submit="ture">
+    <view class='tx'>问题详情描述:</view>
+    <view class='text_des'>
+      <textarea name='Des' class='quetext' maxlength="1000" value="{{workOrder.woDesc}}"></textarea>
+    </view>
+    <view class='userinfo_tx' style='padding-left: 10px'>
+      <!-- <picker name='expectDate' class='picker' value="{{expectedDate}}" mode="date" fields="day" start="{{sysDate}}" end="2030-12-30" bindchange="bindDateChange">
+      <view style='font-size: 14px;'>期望解决日期：</view>
+        <text class="weui-input">{{expectedDate}}</text>
+        <image  style="width: 16px; height: 16px;padding-left: 5px;" src="../../images/cal.png">
+       </image>
+      </picker> -->
+      <picker name='expectDate' class='picker' value="{{expectedDate}}" mode="date" fields="day" start="{{sysDate}}" end="2030-12-30" bindchange="bindDateChange">
+<text style='font-size: 14px;'>期望解决日期： </text>
+          <text class="weui-input">{{expectedDate}}</text>
+           <image  style="width: 16px; height: 16px;padding-left: 5px;" src="../../images/cal.png">
+       </image>
+      </picker> 
+    </view>
+      <button class='btn_submit'  formType="submit">提交</button>
+  </form>
+</scroll-view>

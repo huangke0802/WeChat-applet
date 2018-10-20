@@ -1,0 +1,36 @@
+const app = getApp();
+const util = require('../../utils/util.js');
+const network = require('../../utils/network.js');
+
+const rejectUrl = app.globalData.BaseURL + '/questionICSS/rejectVoc'; //子工单驳回url
+
+Page({
+  data : {
+    rejectReason : "",
+    problemRange: [{
+      value: 0,
+      text: '是'
+    }, {
+      value: 1,
+      text: '否'
+    }],
+    imgPath: app.globalData.imgPath, //图片地址
+  },
+  onLoad(options){
+
+  },
+
+  //输入文本域
+  bindinputReject(e){
+    this.setData({
+      rejectReason : e.detail.value
+    });
+  },
+  tel: function () {
+    wx.makePhoneCall({
+      phoneNumber: '13163715520',
+    })
+  }
+
+
+});

@@ -1,0 +1,60 @@
+<!--pages/editNewWorkOrder/editNewWorkOrder.wxml  编辑子工单-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='activity'>
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='message'>
+        <view class='tx'>林振华 （ID：HW251555）</view>
+        <view class='tx' bindtap="tel">电话：13168098484<image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/phone.png"></image></view>
+        <view class='tx'>邮箱：linzhenhua@huawei.com</view>
+        <view class='tx'>DU部长 （公司：华为公司，无线网络，深圳）</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="voc-viewoview" id="vocEditOrder">
+
+    <view class="voc-item-con">
+
+      <view class="voc-item-t">请填写子工单信息</view>
+
+      <view>
+        <label>责任人：</label>
+        <view class="section">
+          <input placeholder="请输入责任人" auto-focus/>
+        </view>
+      </view>
+
+      <view>
+        <view class="section">
+          <view class="section__title">日期选择器：</view>
+          <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+            <view class="picker">
+              当前选择: {{date}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view>
+        <text>子工单描述：</text>
+        <view class="section">
+          <textarea bindblur="bindTextAreaBlur" />
+        </view>
+
+      </view>
+    </view>
+
+
+    <view class="btn-groups-voc">
+      <button class="item_button add-voc save-voc">
+        取消
+      </button>
+      <button class="item_button add-voc">
+        确定
+      </button>
+    </view>
+
+  </view>
+
+
+</scroll-view>

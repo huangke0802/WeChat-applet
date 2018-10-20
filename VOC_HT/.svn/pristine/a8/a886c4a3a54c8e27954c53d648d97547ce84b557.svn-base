@@ -1,0 +1,10 @@
+<view class='activity'>
+<form bindsubmit="perSubmit" bindreset="formReset">
+  <view class='icon'>
+    <icon type="success" size="70" color="rgb(44,147,240)"/>
+  </view>
+  <text class='tx_success'>主银~恭喜您注册成功！</text>
+  <text class='tx_success_con' style='padding-top: 20px'>{{userInfo.customerManagerName}}是您的专属仆从，有任何问题请随时召唤哦。</text>
+   <button class="login_button" formType="submit">确认</button>
+</form>
+</view>

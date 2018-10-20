@@ -1,0 +1,37 @@
+<!--pages/addquestion/addquestion.wxml-->
+<scroll-view class='srcoll_activity' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+    <view class='message'>
+      <view class='useraccount'>姓名：{{userInfo.lastName}} {{userInfo.staffNo}}</view>
+      <view class='usermessage'>
+        <text>主部门：{{userInfo.productLineName}}</text>
+        <!-- <image style="width: 30rpx; height: 30rpx"  src="{{imgPath}}/tel.png"></image> -->
+      </view>
+      <view class='usermessage'>
+       <text>问题专属接口人：</text>
+           <text  wx:if="{{userInfo.customerManagerName!=null&&      userInfo.customerManagerName!=''}}">{{userInfo.customerManagerName}} </text>
+          <text wx:elif="{}">分派中</text> 
+             <text  wx:if="{{userInfo.customerManagerName!=null&&      userInfo.customerManagerName!=''&& userInfo.tel!=null&&userInfo.tel!=''}}">  {{userInfo.csTel}}</text>
+      </view>
+    </view>
+  </view>
+
+  <form bindsubmit="formSubmit" report-submit="ture">
+    <view class='blank'></view>
+    <view class='des'>
+      <view class='tx' style='padding-left: 20px'>问题详情描述:</view>
+      <view class='text_des'>
+        <textarea name='Des' class='quetext' maxlength="1000"></textarea>
+      </view>
+      <view class='userinfo_tx' style='padding-left: 20px'>
+        <picker name='expectDate' class='picker' value="{{dates}}" mode="date" fields="day" start="{{sysDate}}" end="2030-12-30" bindchange="bindDateChange">
+<text style='font-size: 14px;'>期望解决日期： </text>
+          <text class="weui-input">{{currentDate}}</text>
+           <image  style="width: 16px; height: 16px;padding-left: 5px;" src="../../images/cal.png">
+       </image>
+        </picker>
+      </view>
+    </view>
+    <button class='btn_submit' formType="submit" disabled="{{isDisabled}}">提交</button>
+  </form>
+</scroll-view>

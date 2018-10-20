@@ -1,0 +1,86 @@
+<!--pages/editNewWorkOrder/editNewWorkOrder.wxml  编辑子工单-->
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+ <view class='activity'>
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='message'>
+        <view class='progress_tx'>
+          <view class='tx'>客户：石小芳</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>提交时间：2018-03-30 15:44:24</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>子工单流水号：18033015447334</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>期望关闭时间：2018-04-30</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>工单描述：xxxxx</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+<view class="voc-viewoview" id="vocEditOrder">
+
+  <view class="voc-item-con">
+
+    <view class="voc-item-t">处理子工单</view>
+
+    <view><label>处理人：</label>石小芳</view>
+
+    <view class="form-viewoview-item">
+      <text>改进措施：</text>
+      <view class="section">
+        <textarea bindblur="bindTextAreaBlur" />
+      </view>
+    </view>
+
+    <view class="form-viewoview-item">
+      <text>解决进展：</text>
+      <view class="section">
+        <textarea bindblur="bindTextAreaBlur"/>
+      </view>
+
+    </view>
+  </view>
+
+  
+
+  <view class="voc-item-con">
+    <view class="voc-item-t">关闭子工单</view>
+    <view class="form-viewoview-item form-viewoview-edit-item">
+      <label>审批结果：</label>
+      <view class='userinfo_tx' style='padding-left: 0px'>
+        <picker name='resultsApproval' class='picker pickerFormItem' value="{{isResultsApproval}}" range-key="text" bindchange="bindResultsApprovalChange" range="{{resultsApprovalRange}}">
+          <view class="weui-input">{{resultsApprovalRange[isResultsApproval].text}}<image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/select.png"></image></view>
+        </picker>
+      </view>
+
+    </view>
+
+    <view class="form-viewoview-item">
+
+      <label>审批意见：</label>
+      <view class="section">
+        <textarea bindblur="bindTextAreaBlur"/>
+      </view>
+    </view>
+
+  </view>
+
+  
+
+  <view class="order-list-btn">
+
+    <button class="item_button item_sub_button">提交</button>
+
+  </view>
+
+</view>
+
+
+</scroll-view>

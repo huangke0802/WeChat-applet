@@ -1,0 +1,79 @@
+/* pages/editactivity/editactivity.wxss */
+page{
+  font-size: 12px;
+  width: 100%;
+}
+.activity{
+   height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column ;
+}
+.userinfo{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top:2px solid #EFEFF4;
+}
+.message {
+  width: 100%;
+  padding:20rpx 50rpx;
+}
+.useraccount {
+  padding: 20rpx 0rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: white
+}
+.usermessage {
+  padding: 10rpx 0px 10rpx 0px;
+  color: white;
+  font-size: 24rpx
+}
+.usermessage image{
+  margin-left: 50rpx
+}
+
+.userinfo_tx{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.tx{
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.add{
+  font-size: 40px;
+  padding-right: 20px;
+}
+.quetext{
+  width: 100%;
+  margin: 10px;
+ border: solid;
+ border-color:  #EFEFF4;
+ border-width: 2px;
+}
+.btn_submit{
+  width:100%;
+  background:#1793E5;
+  color:#fff;
+  position:fixed;
+  bottom:10px;
+  border-radius:0;
+}
+.btnview{
+display: flex;
+  flex-direction:row;
+  justify-content:center;
+}
+.text_des{
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+}
+.picker{
+  color:#1793E5;
+  font-size: 14px;
+}

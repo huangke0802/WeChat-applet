@@ -1,0 +1,24 @@
+<!--pages/mycustomer/mycustomer.wxml-->
+<scroll-view scroll-y="true" bindscrolltolower="scrollLower" style="background:url('{{imgPath}}/006.png');background-size:100% 100%;">   
+  <view class="item" wx:for="{{customerList}}"  wx:key="unique"  data-data="{{item}}" >   
+    <view class="li">
+      <text class="title">客户名称：</text>
+      <text class="content">{{item.lastName}}</text>
+    </view>
+    <view class="li">
+      <text class="title">联系方式：</text>
+      <text class="content">{{item.tel}}</text>
+    </view>
+    <view class="li">
+      <text class="title">部门：</text>
+      <text class="content">{{item.pdName}}</text>
+    </view>
+    <block wx:if="{{staffNo==item.customerManagerNo}}">
+      <view class='image'>
+        <image src='{{imgPath}}/follow.jpg'></image>
+      </view>
+    </block>
+  </view>  
+  <view class="loading" hidden="{{!loading}}"><image src='{{imgPath}}/loading.png' class="rotate"/><text style="padding:0 0 0 20px;">Loading...</text></view>  
+  <view class="loading complete" hidden="{{!loadingComplete}}">此处暂无东东，请主银移步其他界面</view>  
+</scroll-view>

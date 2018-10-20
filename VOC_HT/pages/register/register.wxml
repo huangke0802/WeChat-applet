@@ -1,0 +1,36 @@
+<!--pages/register/register.wxml-->
+<view class='activity' style="background:url('{{imgPath}}/login_bg.png');background-size:100% 100%;">
+<view class="login_container">
+<view class='v_logo'>
+ <image bindtap="selectCompay" class="logo" src="{{imgPath}}/{{imgName}}" ></image>
+</view>
+  <form bindsubmit="formSubmit" bindreset="formReset" report-submit="ture">
+    <view class="login_view">
+      <text class="login_lable">主部门<text style='color: red'>*</text>：</text>
+      <picker name='productLine' class="login_lableSel" bindchange="bindPickerChange" placeholder="请选择主部门" value="{{index}}" range="{{productList}}" range-key='deptName'>
+        <view class="picker" >{{productList[index]?productList[index].deptName:title}}</view>
+      </picker>
+    </view>
+<!--
+    <view class="login_view">
+      <text class="login_lable">工号<text style='color: red'>*</text>：</text>
+      <input name="staffNo" class="login_text" placeholder="请输入您的工号" maxlength="10" type="number" />
+    </view>
+     -->
+    <view class="login_view">
+      <text class="login_lable">姓名<text style='color: red'>*</text>：</text>
+      <input name="lastName" class="login_text" placeholder="请输入您的姓名" maxlength="10" type="text" />
+    </view>
+    <!--bindinput="listenerPasswordInput" 监听校验-->
+    <view class="login_view">
+      <text class="login_lable">手机<text style='color: red'>*</text>：</text>
+      <input name="tel" class="login_text" placeholder="请输入您的手机号" maxlength="11" type="number" />
+    </view>
+    <view>
+      <button class="login_button" formType="submit">提交</button>
+      <!-- bindtap="submitAction"-->
+    </view>
+  </form>
+<view class="errod">{{tip}}</view>
+</view>
+</view>

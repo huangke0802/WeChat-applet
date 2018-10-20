@@ -1,0 +1,24 @@
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='activity'>
+
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='message'>
+        <view class='progress_tx'>
+          <view class='tx'>工单号：{{curOderInfo.businessKey}}</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>{{curOderInfo.contactName}}：(ID：{{curOderInfo.contactNum}})</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx' bindtap='makePhoneCall' data-number="{{curOderInfo.contactPhone}}">电话：{{curOderInfo.contactPhone}}</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>邮箱：{{curOderInfo.contactEmail}}</view>
+        </view>
+        <view class='progress_tx'>
+          <view class='tx'>{{curOderInfo.contactRoleName}}：(公司：{{curOderInfo.companyName}}，{{curOderInfo.woPdName}}，{{curOderInfo.woPdtName == null?'':curOderInfo.woPdtName + ','}}{{curOderInfo.woPduName == null?'':curOderInfo.woPduName + ','}}{{curOderInfo.woArea}})</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

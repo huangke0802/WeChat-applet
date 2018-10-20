@@ -1,0 +1,145 @@
+<scroll-view class='srcoll_activity' scroll-y='true' style="height:{{tbodyHeight}}px;" upper-threshold="10px" lower-threshold="10px" bindscrolltoupper="upper" bindscrolltolower="lower">
+  <view class='activity'>
+
+    <view class='userinfo' style="background:url('{{imgPath}}/bg_001.png');background-size:100% 100%;">
+      <view class='baseInfo'>
+        <view class='useraccount'>姓名：{{curOderInfo.actCurTaskAssigneeName}}</view>
+      </view>
+      <view class='message'>
+        <view class='progress_tx'>
+          <view class='tx'>问题单号：{{curOderInfo.businessKey}}</view>
+        </view>
+        <view class='tx'>
+          <text>问题描述：</text>
+          <scroll-view class='srcoll_tx' scroll-y='true'>
+            {{curOderInfo.woDesc}}
+          </scroll-view>
+        </view>
+        <view class='tx expect-date' id='da'>期望解决日期：{{expectedDate}}</view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 工单清单处理 -->
+  <view class="toHandleVocView">
+
+    <view class="voc-con">
+      <view class="voc-item-con">
+        <view>
+          <label>子工单：</label>
+          <text class="count"  bindtap="gotoWorkOrder" data-id="{{id}}">{{subOrderTotal}}</text>
+          <button class="item_button add-voc-button" bindtap="addWorkOrder" data-id="{{id}}">
+              <i>+</i>添加子工单
+          </button>
+        </view>
+        
+      </view>
+
+
+      <!-- <view class="voc-item-con">
+        <view class="voc-item-t">问题描述</view>
+        <view>
+          <label>客户：</label>石一</view>
+        <view>
+          <label>提交时间：</label>2018-03-30 15:44:24</view>
+        <view>
+          <label>工单描述：</label>工单详细描述工单详细描述工单详细描述工单详细描述工单详细描述工单详细描述工单详细描述工单详细描述工单详细描述</view>
+      </view> -->
+
+      <view class="acceviewt-content-VOC">
+        <view class="voc-item-con voc-item-viewrocess">
+          <view class="voc-item-t">处理工单</view>
+          <!-- <view>
+            <label>客户：</label>石小芳</view>
+          <view>
+            <label>提交时间：</label>2018-03-30 15:44:24</view> -->
+          <view class='userinfo_tx' style='padding-left: 0px'>
+            <picker name='problemDate' class='picker pickerFormItem' value="{{isProblem}}" range-key="text" bindchange="bindProblemChange" range="{{problemRange}}">
+              <text class="pickerFormLabel">是否是问题： </text>
+              <view class="weui-input">{{problemRange[isProblem].text}}<image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/select.png"></image></view>
+            </picker>
+          </view>
+          <view class='userinfo_tx' style='padding-left: 0px'>
+            <picker name='planDate' class='picker pickerFormItem' value="{{planDate}}" mode="date" fields="day" start="{{sysDate}}" end="2030-12-30" bindchange="bindPlanDateChange">
+              <text class="pickerFormLabel">计划关闭日期： </text>
+              <view class="weui-input">{{planDate}}
+                <image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/cal.png"></image>
+              </view>
+
+            </picker>
+          </view>
+          <view class='userinfo_tx' style='padding-left: 0px'>
+            <picker name='frequency' class='picker pickerFormItem' value="{{frequency}}" range-key="text" bindchange="bindFrequencyChange" range="{{frequencyRange}}">
+              <text class="pickerFormLabel">汇报频率： </text>
+              <view class="weui-input">{{frequencyRange[frequency].text}}
+              <image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/select.png"></image>
+              </view>
+            </picker>
+          </view>
+          <view class='userinfo_tx' style='padding-left: 0px'>
+            <picker name='sortVOC' class='picker pickerFormItem' value="{{sortVOC}}" range-key="text" bindchange="bindSortVOCChange" range="{{sortVOCRange}}">
+              <text class="pickerFormLabel">VOC分类： </text>
+              <view class="weui-input">{{sortVOCRange[sortVOC].text}}<image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/select.png"></image></view>
+            </picker>
+          </view>
+          <view class='userinfo_tx' style='padding-left: 0px'>
+            <picker name='sortSmallVOC' class='picker pickerFormItem' value="{{sortSmallVOC}}" range-key="text" bindchange="bindSmallVOCChange" range="{{sortSmallVOCRange}}">
+              <text class="pickerFormLabel">VOC小类： </text>
+              <view class="weui-input">{{sortSmallVOCRange[sortSmallVOC].text}}<image style="width: 12px; height: 12px;padding-left: 5px;padding-top:3px;" src="../../images/select.png"></image></view>
+            </picker>
+          </view>
+
+          <view class="send-content">
+            <label>改进措施：</label>
+            <view class="section">
+              <textarea value="{{improveValue}}" bindinput="bindImproveTextAreaBlur" placeholder="请输入改进措施" />
+              <view class="margin-sub-btn">
+                <button class="item_button" bindtap="sendImproveToClient">发布给客户</button>
+              </view>
+            </view>
+
+          </view>
+          <view class="send-content">
+            <label>解决进展：</label>
+            <view class="section">
+              <textarea value="{{solveValue}}" bindinput="bindSolveTextAreaBlur" placeholder="请输入解决进展" />
+              <view class="margin-sub-btn">
+                <button class="item_button" bindtap="sendSolveToClient">发布给客户</button>
+              </view>
+            </view>
+
+          </view>
+
+        </view>
+
+
+
+        <view class="voc-item-con voc-item-viewrocess">
+          <view class="order-list">
+            <view class="voc-item-t">历史进展</view>
+            <view class="histroyMore-ul">
+              <view class="histroyMore-li">
+                <text class="histroyMore-p">2018-03-30 15:44:24 </text>
+                <text>解决进展解决进展解决进展解决进展解决进展</text>
+              </view>
+              <view class="histroyMore-li">
+                <text class="histroyMore-p">2018-04-15 15:44:24 </text>
+                <text>解决进展解决进展解决进展解决进展展解决进展解决进展解决进展解决进展解决进展解决进展解决</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-groups-voc">
+        <button class="item_button add-voc save-voc">
+          保存草稿
+        </button>
+        <button class="item_button add-voc">
+          提交客户关闭
+        </button>
+      </view>
+    </view>
+  </view>
+
+</scroll-view>

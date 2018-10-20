@@ -1,0 +1,86 @@
+/* pages/progress/progress.wxss */
+page{
+  font-size: 12px;
+  width: 100%;
+  background:#EEEEEE;
+}
+.activity{
+   height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column ;
+
+}
+.userinfo{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color:#fff;
+}
+.message{
+  width:94%;
+  margin:0 auto;
+}
+.progress_tx{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top:5px;
+}
+.srcoll_tx{
+  width: 100%;
+  height: 70px;
+}
+.srcoll_activity{
+  width: 100%;
+  height: 100%;
+}
+.tx{
+  padding:5px 0;
+}
+.expect-date{
+  margin-bottom:5px;
+}
+.progress{
+  width:100%;
+  padding:0 0 20px 0;
+}
+.progress .item{
+  position:relative;
+  border-left:2px solid #C8C8C8;
+  margin:0 0 0 20px;
+  padding:10px 0 0 15px;
+}
+.progress image{
+  position:absolute;
+  left:-9px;
+  top:30px;
+}
+.progress image{
+  width:16px;
+  height:16px;
+}
+
+
+.progress-info{
+  background:#fff;
+  border-radius:6px;
+  padding:10px;
+  margin:0 20px 0 0;
+}
+.progress-tx{
+  display: flex;
+  margin-bottom:2px;
+  padding:3px 0;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent
+}
+.c35{
+  color:#353535;
+}
+.bold{
+  font-weight:bolder;
+}

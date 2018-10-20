@@ -1,0 +1,8 @@
+const app = getApp()
+const network = require('../../utils/network.js');
+
+Page({
+  data : {
+    
+  }
+});

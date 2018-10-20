@@ -1,0 +1,23 @@
+<!--pages/register/registerC.wxml-->
+<view class='activity' style="background:url('{{imgPath}}/login_bg.png');background-size:100% 100%;">
+  <view class="login_container" >
+  <view class='v_logo'>
+ <image bindtap="selectCompay" class="logo" src="{{imgPath}}/icsslogo.jpg" ></image>
+</view>
+    <form bindsubmit="ICSSSubmit" bindreset="formReset" report-submit="ture">
+      <view class="login_view"  >
+        <text class="login_lable">工号：</text>
+        <input name="staffNo" class="login_text" placeholder="请输入您的工号" maxlength="10" type="number" />
+      </view>
+      <view class="login_view">
+        <text class="login_lable">密码：</text>
+        <input name="passWord" class="login_text" placeholder="请输入您的密码"  type="password" />
+      </view>
+      <view>
+        <button class="login_button" formType="submit">登录</button>
+      </view>
+        <text class='txt'>请使用中软国际TPG门户系统的帐号登录</text>
+    </form>
+    <view class="errod">{{tip}}</view>
+  </view>
+</view>
